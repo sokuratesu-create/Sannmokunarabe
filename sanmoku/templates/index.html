@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>三目並べ</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>三目並べ</h1>
+    <form method="post">
+        <table>
+            {% for i in range(3) %}
+            <tr>
+                {% for j in range(3) %}
+                <td>
+                    {% if board[i][j] == "" %}
+                        <button name="row" value="{{ i }}">
+                            <input type="hidden" name="col" value="{{ j }}">
+                            空
+                        </button>
+                    {% else %}
+                        {{ board[i][j] }}
+                    {% endif %}
+                </td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+    </form>
+</body>
+</html>
